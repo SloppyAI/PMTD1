@@ -9,6 +9,7 @@ import Database.DAL;
 import Helper.chuyenDoi;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -50,7 +51,10 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
         btnHome = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         cbbSapXep = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
+        lblSapXep = new javax.swing.JLabel();
+        txtSeach = new javax.swing.JTextField();
+        lblImageSeach = new javax.swing.JLabel();
+        btnTimKiem = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         btlBangCV = new javax.swing.JTable();
@@ -223,6 +227,7 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
         jPanel2.add(btnHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 200, 60));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         cbbSapXep.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cbbSapXep.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mặc định", "Lương: Từ Cao đến Thâp", "Lương: Từ Thấp đến Cao", "Ngày đăng mới nhất", "Ngày đăng cũ nhất" }));
@@ -231,29 +236,25 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
                 cbbSapXepActionPerformed(evt);
             }
         });
+        jPanel3.add(cbbSapXep, new org.netbeans.lib.awtextra.AbsoluteConstraints(901, 0, -1, 43));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Sắp xếp theo");
+        lblSapXep.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblSapXep.setText("Sắp xếp theo");
+        jPanel3.add(lblSapXep, new org.netbeans.lib.awtextra.AbsoluteConstraints(801, 13, -1, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(18, 18, 18)
-                .addComponent(cbbSapXep, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cbbSapXep, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)))
-        );
+        txtSeach.setBorder(null);
+        jPanel3.add(txtSeach, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 4, 260, 30));
+
+        lblImageSeach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/seach2.png"))); // NOI18N
+        jPanel3.add(lblImageSeach, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 410, 40));
+
+        btnTimKiem.setText("jButton1");
+        btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTimKiemActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 130, 40));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -479,6 +480,10 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
         loadDataSQLVaoTable();
     }//GEN-LAST:event_cbbSapXepActionPerformed
 
+    private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
+       JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
+    }//GEN-LAST:event_btnTimKiemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -520,6 +525,7 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable btlBangCV;
     private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnTimKiem;
     private javax.swing.JComboBox<String> cbbSapXep;
     private javax.swing.JPanel hover1;
     private javax.swing.JPanel hover2;
@@ -528,7 +534,6 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
     private javax.swing.JLabel iconLich;
     private javax.swing.JLabel iconTien;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -543,14 +548,17 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
     private javax.swing.JLabel lblHover3;
     private javax.swing.JLabel lblHover4;
     private javax.swing.JLabel lblIconViTri;
+    private javax.swing.JLabel lblImageSeach;
     private javax.swing.JLabel lblImgCtVL;
     private javax.swing.JLabel lblKhamSucKhoe;
     private javax.swing.JLabel lblNghiPhep;
+    private javax.swing.JLabel lblSapXep;
     private javax.swing.JLabel lblThuong;
     private javax.swing.JLabel lblVND;
     private javax.swing.JTextField txtDiaDiem;
     private javax.swing.JTextField txtLuong;
     private javax.swing.JTextField txtNgayDang;
+    private javax.swing.JTextField txtSeach;
     private javax.swing.JTextField txtTenCty;
     private javax.swing.JTextField txtTenCv;
     // End of variables declaration//GEN-END:variables

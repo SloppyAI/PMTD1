@@ -53,7 +53,8 @@ public class DAL {
                 + "order by Luong Asc";
         return DBConnection.GetData(sql);
     }
+    
+    //Hàm tìm kiếm theo tên việc làm
+    
 
-//Test git 11111111
-    // test lần 3
 }

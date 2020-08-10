@@ -87,7 +87,6 @@ public class frmChinh extends javax.swing.JFrame {
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-        jScrollPane1.setViewportView(null);
 
         pnlFrmTD.setBackground(new java.awt.Color(255, 255, 255));
         pnlFrmTD.setPreferredSize(new java.awt.Dimension(1221, 1300));
