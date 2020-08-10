@@ -161,6 +161,8 @@ public class frmLogin extends javax.swing.JFrame {
        frmChinh home = new frmChinh();
        home.setVisible(true);
        // hahahshcnxjcdsxsdkxc
+       // test githup
+       // 123456
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
