@@ -24,6 +24,11 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
     public frmDanhSachViecLam() {
         initComponents();
         loadDataSQLVaoTable();
+        cbbNganh.setVisible(false);
+        cbbMucLuong.setVisible(false);
+        btnTimKiem.setVisible(false);
+        lblImgSeach.setVisible(false);
+        lblIconGifNguoc.setVisible(false);
     }
 
     /**
@@ -52,9 +57,15 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         cbbSapXep = new javax.swing.JComboBox<>();
         lblSapXep = new javax.swing.JLabel();
+        lblTextSeach = new javax.swing.JLabel();
         txtSeach = new javax.swing.JTextField();
+        iconGif = new javax.swing.JLabel();
         lblImageSeach = new javax.swing.JLabel();
+        cbbMucLuong = new javax.swing.JComboBox<>();
+        cbbNganh = new javax.swing.JComboBox<>();
+        lblImgSeach = new javax.swing.JLabel();
         btnTimKiem = new javax.swing.JButton();
+        lblIconGifNguoc = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         btlBangCV = new javax.swing.JTable();
@@ -236,17 +247,47 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
                 cbbSapXepActionPerformed(evt);
             }
         });
-        jPanel3.add(cbbSapXep, new org.netbeans.lib.awtextra.AbsoluteConstraints(901, 0, -1, 43));
+        jPanel3.add(cbbSapXep, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 0, -1, 43));
 
         lblSapXep.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblSapXep.setText("Sắp xếp theo");
-        jPanel3.add(lblSapXep, new org.netbeans.lib.awtextra.AbsoluteConstraints(801, 13, -1, -1));
+        jPanel3.add(lblSapXep, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, -1, -1));
+
+        lblTextSeach.setText("Tìm kiếm việc làm, Công ty");
+        jPanel3.add(lblTextSeach, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 190, 20));
 
         txtSeach.setBorder(null);
-        jPanel3.add(txtSeach, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 4, 260, 30));
+        txtSeach.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtSeachMouseClicked(evt);
+            }
+        });
+        txtSeach.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSeachKeyReleased(evt);
+            }
+        });
+        jPanel3.add(txtSeach, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 210, 23));
+
+        iconGif.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/unnamed-(1).gif"))); // NOI18N
+        iconGif.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                iconGifMouseClicked(evt);
+            }
+        });
+        jPanel3.add(iconGif, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 10, 40, 20));
 
         lblImageSeach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/seach2.png"))); // NOI18N
-        jPanel3.add(lblImageSeach, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 0, 410, 40));
+        jPanel3.add(lblImageSeach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 270, 40));
+
+        cbbMucLuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dưới 10tr", "10 - 20tr", "20 - 50tr", "Trên 50tr" }));
+        jPanel3.add(cbbMucLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 150, 40));
+
+        cbbNganh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT", "Java", "C#", "C++", "Developer", " " }));
+        jPanel3.add(cbbNganh, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 150, 40));
+
+        lblImgSeach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/imgTimKiem.png"))); // NOI18N
+        jPanel3.add(lblImgSeach, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 110, 40));
 
         btnTimKiem.setText("jButton1");
         btnTimKiem.addActionListener(new java.awt.event.ActionListener() {
@@ -254,7 +295,15 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
                 btnTimKiemActionPerformed(evt);
             }
         });
-        jPanel3.add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 0, 130, 40));
+        jPanel3.add(btnTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 0, 110, 40));
+
+        lblIconGifNguoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/unnamed-(nguoc).gif"))); // NOI18N
+        lblIconGifNguoc.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lblIconGifNguocMouseClicked(evt);
+            }
+        });
+        jPanel3.add(lblIconGifNguoc, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 0, 70, 40));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -480,9 +529,40 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
         loadDataSQLVaoTable();
     }//GEN-LAST:event_cbbSapXepActionPerformed
 
+    private void txtSeachKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSeachKeyReleased
+        //lblTextSeach.setVisible(false);
+
+    }//GEN-LAST:event_txtSeachKeyReleased
+
+    private void txtSeachMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtSeachMouseClicked
+        cbbNganh.setVisible(true);
+        cbbMucLuong.setVisible(true);
+        btnTimKiem.setVisible(true);
+        lblTextSeach.setVisible(false);
+        lblImgSeach.setVisible(true);
+        lblIconGifNguoc.setVisible(true);
+    }//GEN-LAST:event_txtSeachMouseClicked
+
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
-       JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
+        JOptionPane.showMessageDialog(this, "Nhập công việc muốn tìm");
     }//GEN-LAST:event_btnTimKiemActionPerformed
+
+    private void lblIconGifNguocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIconGifNguocMouseClicked
+        cbbNganh.setVisible(false);
+        cbbMucLuong.setVisible(false);
+        btnTimKiem.setVisible(false);
+        lblImgSeach.setVisible(false);
+        lblIconGifNguoc.setVisible(false);
+    }//GEN-LAST:event_lblIconGifNguocMouseClicked
+
+    private void iconGifMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_iconGifMouseClicked
+        cbbNganh.setVisible(true);
+        cbbMucLuong.setVisible(true);
+        btnTimKiem.setVisible(true);
+        lblTextSeach.setVisible(false);
+        lblImgSeach.setVisible(true);
+        lblIconGifNguoc.setVisible(true);
+    }//GEN-LAST:event_iconGifMouseClicked
 
     /**
      * @param args the command line arguments
@@ -526,11 +606,14 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
     private javax.swing.JTable btlBangCV;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnTimKiem;
+    private javax.swing.JComboBox<String> cbbMucLuong;
+    private javax.swing.JComboBox<String> cbbNganh;
     private javax.swing.JComboBox<String> cbbSapXep;
     private javax.swing.JPanel hover1;
     private javax.swing.JPanel hover2;
     private javax.swing.JPanel hover3;
     private javax.swing.JPanel hover4;
+    private javax.swing.JLabel iconGif;
     private javax.swing.JLabel iconLich;
     private javax.swing.JLabel iconTien;
     private javax.swing.JLabel jLabel1;
@@ -547,12 +630,15 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
     private javax.swing.JLabel lblHover2;
     private javax.swing.JLabel lblHover3;
     private javax.swing.JLabel lblHover4;
+    private javax.swing.JLabel lblIconGifNguoc;
     private javax.swing.JLabel lblIconViTri;
     private javax.swing.JLabel lblImageSeach;
     private javax.swing.JLabel lblImgCtVL;
+    private javax.swing.JLabel lblImgSeach;
     private javax.swing.JLabel lblKhamSucKhoe;
     private javax.swing.JLabel lblNghiPhep;
     private javax.swing.JLabel lblSapXep;
+    private javax.swing.JLabel lblTextSeach;
     private javax.swing.JLabel lblThuong;
     private javax.swing.JLabel lblVND;
     private javax.swing.JTextField txtDiaDiem;
@@ -577,19 +663,19 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
         try {
             ResultSet rs = DAL.SXBaiDangMoiNhat();
             int cbbIndex = cbbSapXep.getSelectedIndex();
-            switch (cbbIndex){
-            case 0:
-                break;
-            case 1:
-                rs = DAL.SXBaiDangLuongDESC();
-                break;
-            case 2:
-                rs = DAL.SXBaiDangLuongASC();
-                break;
-            case 3:
-                break;
-            case 4:
-                rs = DAL.SXBaiDangCuNhat();
+            switch (cbbIndex) {
+                case 0:
+                    break;
+                case 1:
+                    rs = DAL.SXBaiDangLuongDESC();
+                    break;
+                case 2:
+                    rs = DAL.SXBaiDangLuongASC();
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    rs = DAL.SXBaiDangCuNhat();
             }
             DefaultTableModel tbmodel = (DefaultTableModel) btlBangCV.getModel();
             tbmodel.setRowCount(0);
