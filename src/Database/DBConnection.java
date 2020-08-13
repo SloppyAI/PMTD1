@@ -7,6 +7,7 @@ package Database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,13 +20,15 @@ public class DBConnection {
     private static String DB_URL = "jdbc:sqlserver://localhost;"
             + "databaseName=QL_TuyenDung;";
     private static String USER_NAME = "sa";
-    private static String PASSWORD = "21122000";    
+    private static String PASSWORD = "seeker305";   
     static Connection conn = null;
 
     public static void ConnectSql() {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection(DB_URL, USER_NAME, PASSWORD);
+            PreparedStatement pstmt = null;
+            
             System.out.println("connect successfully!");
         } catch (ClassNotFoundException ex) {
             System.out.println("Lỗi 01 " );

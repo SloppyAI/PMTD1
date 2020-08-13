@@ -9,6 +9,8 @@ import Database.DAL;
 import Helper.chuyenDoi;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -280,10 +282,10 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
         lblImageSeach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/seach2.png"))); // NOI18N
         jPanel3.add(lblImageSeach, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 270, 40));
 
-        cbbMucLuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dưới 10tr", "10 - 20tr", "20 - 50tr", "Trên 50tr" }));
+        cbbMucLuong.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn mức lương", "Dưới 10tr", "10tr-20tr", "Trên 20tr" }));
         jPanel3.add(cbbMucLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 0, 150, 40));
 
-        cbbNganh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "IT", "Java", "C#", "C++", "Developer", " " }));
+        cbbNganh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Chọn ngành", "Quản lý", "Bất động sản", "Công nghệ cao" }));
         jPanel3.add(cbbNganh, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 150, 40));
 
         lblImgSeach.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/imgTimKiem.png"))); // NOI18N
@@ -544,7 +546,17 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
     }//GEN-LAST:event_txtSeachMouseClicked
 
     private void btnTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTimKiemActionPerformed
-        JOptionPane.showMessageDialog(this, "Nhập công việc muốn tìm");
+        String TenCV = "%" + txtSeach.getText() + "%";
+        String TenNganh = cbbNganh.getSelectedItem().toString();
+        String MucLuong = cbbMucLuong.getSelectedItem().toString();
+        
+        if (TenCV.equalsIgnoreCase("%%") && TenNganh.equalsIgnoreCase("Chọn ngành") && MucLuong.equalsIgnoreCase("Chọn mức lương") ){
+            JOptionPane.showMessageDialog(this, "Nhập thông tin tìm kiếm");
+        }else{
+            TimKiem(TenCV, TenNganh, MucLuong);
+        }
+        
+        
     }//GEN-LAST:event_btnTimKiemActionPerformed
 
     private void lblIconGifNguocMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblIconGifNguocMouseClicked
@@ -696,5 +708,38 @@ public class frmDanhSachViecLam extends javax.swing.JFrame {
             System.out.println("Lỗi kết nối");
         }
 
+    }
+    
+    public void TimKiem(String TenCV, String TenNganh, String MucLuong){
+        
+            lblIconViTri.setVisible(false);
+            iconLich.setVisible(false);
+            iconTien.setVisible(false);
+            lblVND.setVisible(false);
+            lblDaoTao.setVisible(false);
+            lblKhamSucKhoe.setVisible(false);
+            lblNghiPhep.setVisible(false);
+            lblThuong.setVisible(false);
+        try {    
+            ResultSet rs = DAL.DALTimKiem(TenCV, TenNganh, MucLuong);
+            
+            DefaultTableModel tbmodel = (DefaultTableModel) btlBangCV.getModel();
+            tbmodel.setRowCount(0);
+            Object obj[] = new Object[8];
+
+            //Tạo một mảng Object có số phẩn tử bằng số cột
+            while (rs.next()) {
+                obj[0] = btlBangCV.getRowCount() + 1;
+                obj[1] = rs.getString("NGANH");
+                obj[2] = rs.getString("TENCV");
+                obj[3] = rs.getString("DIADIEM");
+                obj[4] = chuyenDoi.SoString(rs.getInt("Luong"));
+                obj[5] = chuyenDoi.LayNgayString(rs.getDate("NgayDang"));
+
+                tbmodel.addRow(obj);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Lỗi kết nối");
+        }
     }
 }
