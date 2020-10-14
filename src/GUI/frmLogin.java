@@ -18,6 +18,8 @@ public class frmLogin extends javax.swing.JFrame {
      */
     public frmLogin() {
         initComponents();
+        
+        // test
     }
 
     /**
@@ -39,8 +41,6 @@ public class frmLogin extends javax.swing.JFrame {
         DisShow = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         lblImg = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
 
@@ -96,21 +96,6 @@ public class frmLogin extends javax.swing.JFrame {
         jLabel2.setText("LOGIN");
         pnlLogin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 382, 70, 30));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel3.setText("Nhóm 2 Fpoly TN");
-        pnlLogin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 480, 130, 30));
-
-        jButton1.setBackground(new java.awt.Color(0, 185, 242));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Exit");
-        jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        pnlLogin.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 510, 110, 20));
-
         lblImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/frmLogin.png"))); // NOI18N
         pnlLogin.add(lblImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 530));
 
@@ -157,14 +142,6 @@ public class frmLogin extends javax.swing.JFrame {
       JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
     }//GEN-LAST:event_btnLoginActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       frmChinh home = new frmChinh();
-       home.setVisible(true);
-       // hahahshcnxjcdsxsdkxc
-       // test githup
-       // 123456
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -207,10 +184,8 @@ public class frmLogin extends javax.swing.JFrame {
     private javax.swing.JLabel DisShow;
     private javax.swing.JLabel ShowPass;
     private javax.swing.JButton btnLogin;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel lblImg;
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblPassword;

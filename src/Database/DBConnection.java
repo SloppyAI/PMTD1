@@ -20,7 +20,7 @@ public class DBConnection {
     private static String DB_URL = "jdbc:sqlserver://localhost;"
             + "databaseName=QL_TuyenDung;";
     private static String USER_NAME = "sa";
-    private static String PASSWORD = "seeker305";   
+    private static String PASSWORD = "21122000";   
     static Connection conn = null;
 
     public static void ConnectSql() {
